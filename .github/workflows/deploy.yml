@@ -19,7 +19,7 @@ env:
   PUBLICATION_EPUB_ISBN: ${{ secrets.PUBLICATION_EPUB_ISBN }}
   PUBLICATION_MOBI_ISBN: ${{ secrets.PUBLICATION_MOBI_ISBN }}
   PUBLICATION_PDF_ISBN: ${{ secrets.PUBLICATION_PDF_ISBN }}
-
+      
 on:
   repository_dispatch:
     types: update-event
