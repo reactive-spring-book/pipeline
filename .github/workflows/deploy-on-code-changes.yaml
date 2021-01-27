@@ -1,0 +1,10 @@
+
+on: 
+  repository_dispatch:
+    types: update-code-event
+
+jobs: 
+  runs-on: ubuntu-20.04
+  steps:
+    
+    - run:  echo "somebody is trying to run this with the update-code-event. Make sure you've enabled that for the build job in this GH Action." 
