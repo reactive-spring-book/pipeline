@@ -7,8 +7,8 @@ env:
 
   KINDLEGEN: /home/runner/bin/kindlegen/kindlegen
 
-#  GIT_PASSWORD: ${{ secrets.GIT_PASSWORD }}
-#  GIT_USERNAME: ${{ secrets.GIT_USERNAME }}
+  GIT_PASSWORD: ${{ secrets.GIT_PASSWORD }}
+  GIT_USERNAME: ${{ secrets.GIT_USERNAME }}
   GH_PAT: ${{ secrets.GH_PAT }}
 
 
