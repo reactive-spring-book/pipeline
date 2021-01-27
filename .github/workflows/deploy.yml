@@ -4,14 +4,18 @@ env:
   ARTIFACTORY_USERNAME: ${{ secrets.ARTIFACTORY_USERNAME }}
   ARTIFACTORY_PASSWORD: ${{ secrets.ARTIFACTORY_PASSWORD }}
   KINDLEGEN: /home/runner/bin/kindlegen/kindlegen
-  GIT_PASSWORD:  ${{ secrets.GIT_PASSWORD }}
-  GIT_USERNAME:  ${{ secrets.GIT_USERNAME }}
-  AWS_REGION:  ${{ secrets.AWS_REGION }}
-  AWS_ACCESS_KEY_ID:  ${{ secrets.AWS_ACCESS_KEY_ID }}
-  AWS_SECRET_ACCESS_KEY:  ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  GIT_PASSWORD: ${{ secrets.GIT_PASSWORD }}
+  GIT_USERNAME: ${{ secrets.GIT_USERNAME }}
+  AWS_REGION: ${{ secrets.AWS_REGION }}
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  PUBLICATION_EPUB_ISBN: ${{ secrets.PUBLICATION_EPUB_ISBN }}
+  PUBLICATION_MOBI_ISBN: ${{ secrets.PUBLICATION_MOBI_ISBN }}
+  PUBLICATION_PDF_ISBN: ${{ secrets.PUBLICATION_PDF_ISBN }}
+
 
 on:
-  
+
   repository_dispatch:
     types: update-event
   push:
@@ -42,11 +46,11 @@ jobs:
           key: ${{ runner.os }}-m2
           restore-keys: ${{ runner.os }}-m2
 
-      - name: configure optimizer binaries 
-        run: sudo apt install  ghostscript  && sudo gem install asciidoctor && sudo gem install asciidoctor-pdf  && sudo gem install rghost && which ghostscript && which asciidoctor-pdf-optimize 
-        
+      - name: configure optimizer binaries
+        run: sudo apt install  ghostscript  && sudo gem install asciidoctor && sudo gem install asciidoctor-pdf  && sudo gem install rghost && which ghostscript && which asciidoctor-pdf-optimize
+
       - name: build and run
-        run:  mvn -DskipTests=true -f pom.xml clean package  && java -jar target/*jar 
+        run: mvn -DskipTests=true -f pom.xml clean package  && java -jar target/*jar
 
 
 
